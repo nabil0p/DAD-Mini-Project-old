@@ -34,53 +34,121 @@ graph LR
 
 ```
 
-URL Endpoints
-User Management
-POST /api/users/register: Register a new user
-POST /api/users/login: User login
-GET /api/users/{id}: Retrieve user details by ID
-PUT /api/users/{id}: Update user details
-DELETE /api/users/{id}: Delete user
-Locker Management
-POST /api/lockers: Add a new locker
-GET /api/lockers: Retrieve all lockers
-GET /api/lockers/{id}: Retrieve locker details by ID
-PUT /api/lockers/{id}: Update locker details
-DELETE /api/lockers/{id}: Delete locker
-Parcel Management
-POST /api/parcels: Add a new parcel
-GET /api/parcels: Retrieve all parcels
-GET /api/parcels/{id}: Retrieve parcel details by ID
-PUT /api/parcels/{id}: Update parcel details
-DELETE /api/parcels/{id}: Delete parcel
-Socket Endpoints
-ws://{middleware_url}/notifications: WebSocket endpoint for real-time notifications
-Functions/Features in the Middleware
-User Authentication and Authorization
-Locker Management
-Parcel Tracking and Management
-Real-Time Notifications
-Report Generation
-Database and Tables
-Database: locker_system
-Users Table
-id: Integer, Primary Key
-username: Varchar
-password: Varchar
-role: Varchar (Admin, Courier, Recipient)
-email: Varchar
-Lockers Table
-id: Integer, Primary Key
-location: Varchar
-status: Varchar (Available, Occupied)
-Parcels Table
-id: Integer, Primary Key
-recipient_id: Integer, Foreign Key (Users)
-locker_id: Integer, Foreign Key (Lockers)
-status: Varchar (Pending, Delivered, Retrieved)
-Notifications Table
-id: Integer, Primary Key
-user_id: Integer, Foreign Key (Users)
-message: Text
-timestamp: Timestamp
+# Locker Management System
 
+This repository contains the Locker Management System API, which provides functionalities for user management, locker management, and parcel management. The system also includes real-time notifications via WebSocket and supports report generation.
+
+## URL Endpoints
+
+### User Management
+
+- **Register a new user**
+  - `POST /api/users/register`
+
+- **User login**
+  - `POST /api/users/login`
+
+- **Retrieve user details by ID**
+  - `GET /api/users/{id}`
+
+- **Update user details**
+  - `PUT /api/users/{id}`
+
+- **Delete user**
+  - `DELETE /api/users/{id}`
+
+### Locker Management
+
+- **Add a new locker**
+  - `POST /api/lockers`
+
+- **Retrieve all lockers**
+  - `GET /api/lockers`
+
+- **Retrieve locker details by ID**
+  - `GET /api/lockers/{id}`
+
+- **Update locker details**
+  - `PUT /api/lockers/{id}`
+
+- **Delete locker**
+  - `DELETE /api/lockers/{id}`
+
+### Parcel Management
+
+- **Add a new parcel**
+  - `POST /api/parcels`
+
+- **Retrieve all parcels**
+  - `GET /api/parcels`
+
+- **Retrieve parcel details by ID**
+  - `GET /api/parcels/{id}`
+
+- **Update parcel details**
+  - `PUT /api/parcels/{id}`
+
+- **Delete parcel**
+  - `DELETE /api/parcels/{id}`
+
+### Socket Endpoints
+
+- **WebSocket endpoint for real-time notifications**
+  - `ws://{middleware_url}/notifications`
+
+## Functions/Features in the Middleware
+
+- **User Authentication and Authorization**
+- **Locker Management**
+- **Parcel Tracking and Management**
+- **Real-Time Notifications**
+- **Report Generation**
+
+## Database and Tables
+
+**Database: `locker_system`**
+
+### Users Table
+
+| Column    | Type    | Description         |
+|-----------|---------|---------------------|
+| id        | Integer | Primary Key         |
+| username  | Varchar |                     |
+| password  | Varchar |                     |
+| role      | Varchar | (Admin, Courier, Recipient) |
+| email     | Varchar |                     |
+
+### Lockers Table
+
+| Column    | Type    | Description |
+|-----------|---------|-------------|
+| id        | Integer | Primary Key |
+| location  | Varchar |             |
+| status    | Varchar | (Available, Occupied) |
+
+### Parcels Table
+
+| Column       | Type    | Description                |
+|--------------|---------|----------------------------|
+| id           | Integer | Primary Key                |
+| recipient_id | Integer | Foreign Key (Users)        |
+| locker_id    | Integer | Foreign Key (Lockers)      |
+| status       | Varchar | (Pending, Delivered, Retrieved) |
+
+### Notifications Table
+
+| Column    | Type       | Description                |
+|-----------|------------|----------------------------|
+| id        | Integer    | Primary Key                |
+| user_id   | Integer    | Foreign Key (Users)        |
+| message   | Text       |                            |
+| timestamp | Timestamp  |                            |
+
+## Installation and Setup
+
+To install and run the Locker Management System, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nabil0p/DADproject
+   cd DADproject
